@@ -59,7 +59,7 @@ $info = new Track(1,1);
 		</div>
 	</div>
 	
-	<div id="footer" class="align_center">Created by <a href="http://www.emoriz.com">Mariz Melo</a>.</div>
+	<div id="footer" class="align_center">Created by <a href="http://www.emoriz.com">Mariz Melo.</a></div>
 	
 </body>
 

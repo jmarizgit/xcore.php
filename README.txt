@@ -33,17 +33,17 @@ debug system and the second one activate the php default debug.
 
 
 If the connection variables inside the Database class are correct you should be connected 
-with a database of your choice (see "xcore/php/Database/Database.php").
+with a database of your choice (see "xcore/php/Database/Database.class.php").
 
 
 //Showing the website/system title name
-$title = new Configure(); //no debug this time
-echo $title->title; //should display the XCORE default title
+$configure = new Configure(); //no debug this time
+echo $configure->title; //should display the XCORE default title
 
 
 //Showing your own title
-$title->title = "My web project title"; //set your own title name
-echo $title->title; //should display your own title name now
+$configure->title = "My web project title"; //set your own title name
+echo $configure->title; //should display your own title name now
 
 
 

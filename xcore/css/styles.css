@@ -1,17 +1,15 @@
-<<<<<<< HEAD
 
 /* CSS example XCORE, Mariz Melo 2011 */
 
 html, body{
 	margin:				0;
 	padding:			0;
-=======
+}
 html, body{
 	margin:				0;
 	padding:			0;
 	width:				100%;
 	height:				100%;
->>>>>>> 7f7088cdd868bc984a83d8e46efb6eeb4942ffd4
 }
 body{
 	background: 		black;
@@ -20,7 +18,6 @@ body{
 a{
 	color: 				#3e3e3e;
 }
-<<<<<<< HEAD
 #content, #version{
 	position:			absolute;
 }
@@ -43,7 +40,7 @@ a{
 }
 .align_center{
 	text-align: 		center;
-=======
+}
 #wrapper{
 	height: 95%;
 }
@@ -53,5 +50,4 @@ a{
 }
 .align_center{
 	text-align: center;
->>>>>>> 7f7088cdd868bc984a83d8e46efb6eeb4942ffd4
 }

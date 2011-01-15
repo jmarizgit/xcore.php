@@ -1,0 +1,8 @@
+<?php
+
+//CLASS TO DEAL WITH STRINGS
+class Track extends Debug{
+	//JUST TO USE THE METHODS/ATTRIBUTES FOR THE DEBUG CLASS
+}
+
+?>

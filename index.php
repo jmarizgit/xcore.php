@@ -63,8 +63,4 @@ $info = new Track(1,1);
 	
 </body>
 
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 7f7088cdd868bc984a83d8e46efb6eeb4942ffd4

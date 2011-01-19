@@ -61,7 +61,7 @@ mm@emoriz.com
 --------------------------------------------------------------------------------------------
 4. LICENSE
 --------------------------------------------------------------------------------------------
-XCORE is open source, license can be founded on the link below: 
+XCORE is open source, license can be found on the link below: 
 http://creativecommons.org/licenses/by-sa/3.0/
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS 

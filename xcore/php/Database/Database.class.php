@@ -19,7 +19,7 @@ class Database extends Debug{
 	function __toString(){
 
 		//copyrights, don't change the credits
-		$HELP  = <<<EOF
+		$HELP  = '
 		<br />
 		<b>type:</b>		DATABASE Class <br />
 		<b>author:</b>		Mariz Melo <br />		
@@ -41,7 +41,7 @@ class Database extends Debug{
 		ex : $myinsert = $database->databaseMODIFY("INSERT INTO tablename (column) VALUES (value) WHERE column = some_value");<br />
 		ex2: $myupdate = $database->databaseMODIFY("UPDATE tablename SET column = value WHERE column = value2");<br />
 		ex3: $mydelete = $database->databaseMODIFY("DELETE FROM tablename WHERE column = value");<br />
-EOF;
+		';//end:HELP
 
 		//if the debug system is activated - see: ./xcore/php/Debug/Debug.class.php
 		$this->debugMESSAGE('H', $HELP); //show help message

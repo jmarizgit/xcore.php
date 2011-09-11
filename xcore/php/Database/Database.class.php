@@ -19,28 +19,30 @@ class Database extends Debug{
 	function __toString(){
 
 		//copyrights, don't change the credits
-		$HELP  = '	<br />';
-		$HELP .= '	<b>type:</b>		DATABASE Class <br />';
-		$HELP .= '	<b>author:</b>		Mariz Melo <br />';
-		$HELP .= '	<b>released:</b>	08-25-2008 <br />';
-		$HELP .= '	<b>description:</b>	<i>"Provide methods to connect applications with databases"</i> <br />';
-		$HELP .= '	<br />';
-		$HELP .= '	<b>instructions:</b><br />';
-		$HELP .= '		METHOD: <b>databaseCONNECT</b>( (string) database <b>address</b>, (string) database <b>username</b>, (string) database <b>password</b>, (string) database <b>name</b>, (string) database <b>type</b> - mysql is default )<br />';
-		$HELP .= '			//connect to database system<br />';
-		$HELP .= '			ex :  $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata", "database" );<br />';
-		$HELP .= '			ex2: $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata" ); // in case of be using mysql you don not need declare database type <br />';
-		$HELP .= '<br />';
-		$HELP .= '		METHOD: <b>databaseSELECT</b>( (string) SQL select query ) <br />';
-		$HELP .= '			//return an array with results from a SELECT query or 0 (if did not found anything)<br />';
-		$HELP .= '			ex: $myselect = $database->databaseSELECT("SELECT * FROM tablename");<br />';
-		$HELP .= '<br />';
-		$HELP .= '		METHOD: <b>databaseMODIFY</b>() <br />';
-		$HELP .= '			//used for INSERT, UPDATE, or DELETE queries. Just return the value 0 if could not executed the request.<br />';
-		$HELP .= '			ex : $myinsert = $database->databaseMODIFY("INSERT INTO tablename (column) VALUES (value) WHERE column = some_value");<br />';
-		$HELP .= '			ex2: $myupdate = $database->databaseMODIFY("UPDATE tablename SET column = value WHERE column = value2");<br />';
-		$HELP .= '			ex3: $mydelete = $database->databaseMODIFY("DELETE FROM tablename WHERE column = value");<br />';
-		
+		$HELP  = <<<EOF
+		<br />
+		<b>type:</b>		DATABASE Class <br />
+		<b>author:</b>		Mariz Melo <br />		
+		<b>released:</b>	08-25-2008 <br />
+		<b>description:</b>	<i>"Provide methods to connect applications with databases"</i> <br />
+		<br />
+		<b>instructions:</b><br />
+		METHOD: <b>databaseCONNECT</b>( (string) database <b>address</b>, (string) database <b>username</b>, (string) database <b>password</b>, (string) database <b>name</b>, (string) database <b>type</b> - mysql is default )<br />
+		//connect to database system<br />
+		ex :  $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata", "database" );<br />
+		ex2: $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata" ); // in case of be using mysql you don not need declare database type <br />
+		<br />
+		METHOD: <b>databaseSELECT</b>( (string) SQL select query ) <br />
+		//return an array with results from a SELECT query or 0 (if did not found anything)<br />
+		ex: $myselect = $database->databaseSELECT("SELECT * FROM tablename");<br />
+		<br />
+		METHOD: <b>databaseMODIFY</b>() <br />
+		//used for INSERT, UPDATE, or DELETE queries. Just return the value 0 if could not executed the request.<br />
+		ex : $myinsert = $database->databaseMODIFY("INSERT INTO tablename (column) VALUES (value) WHERE column = some_value");<br />
+		ex2: $myupdate = $database->databaseMODIFY("UPDATE tablename SET column = value WHERE column = value2");<br />
+		ex3: $mydelete = $database->databaseMODIFY("DELETE FROM tablename WHERE column = value");<br />
+EOF;
+
 		//if the debug system is activated - see: ./xcore/php/Debug/Debug.class.php
 		$this->debugMESSAGE('H', $HELP); //show help message
 		

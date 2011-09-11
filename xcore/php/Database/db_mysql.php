@@ -4,21 +4,22 @@
 	
 		global $xdebug;
 		
-		$oCon = mysql_connect($db['url'], $db['user'], $db['pass']);
+		$oCon = mysql_connect($db['server'], $db['user'], $db['pass']);
 		if(!$oCon){
+			//die( $this->debugMessage('S', 'Your request COULD NOT be executed, message:<br />'.mysql_error()) );
 			return 0;
+			
 		}else{
-
-			if(db_select_db($db['database']))
-				return $oCon;
-			else	
-				return 0;
+			
+			if(!is_null($db['database']))
+				db_select_db($db['database']);
+		
+			return $oCon;
 		}
 	}
 
 	function db_select_db($sDatabase) {
-		if(mysql_select_db($sDatabase))
-			return 1;
+		mysql_select_db($sDatabase);
 	}
 
 	function db_query($sSQL) {
@@ -30,8 +31,8 @@
 		return mysql_num_fields($oStmt);
 	}
 	
-	//add jan 2011, count number of rows
-	function db_numrows($oStmt) {
+	//add oct 2010, count number of rows
+	function db_rowRows($oStmt) {
 		return mysql_num_rows($oStmt);
 	}
 
@@ -44,7 +45,7 @@
 	}
 
 	function db_fetch($oStmt) {
-		//return mysql_fetch_array($oStmt);		//modified in Oct 31 2010 - MARIZ MELO	
+		//return mysql_fetch_array($oStmt);		//modify in Oct 31 2010 - MARIZ MELO	
 		return mysql_fetch_assoc($oStmt);
 	}
 

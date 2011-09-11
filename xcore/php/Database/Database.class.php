@@ -1,20 +1,24 @@
 <?php
 
+//inherited class localization
+include_once("./xcore/php/Debug/Debug.class.php");
+
+
 class Database extends Debug{
 	
 	//attributes
-	private $url 		= 'localhost';
-	private $user 		= 'root';
-	private $pass		= 'root';
-	private $database 	= 'dbname';
-	private $sgdb 		= 'mysql';
+	private $url;
+	private $user;
+	private $pass;
+	private $database;
+	private $sgdb;
 	private $dbconnection;		
 
 
 	//help about how to use the class
 	function __toString(){
 
-		/*HELP instructions*/
+		//copyrights, don't change the credits
 		$HELP  = '	<br />';
 		$HELP .= '	<b>type:</b>		DATABASE Class <br />';
 		$HELP .= '	<b>author:</b>		Mariz Melo <br />';
@@ -22,18 +26,17 @@ class Database extends Debug{
 		$HELP .= '	<b>description:</b>	<i>"Provide methods to connect applications with databases"</i> <br />';
 		$HELP .= '	<br />';
 		$HELP .= '	<b>instructions:</b><br />';
-		$HELP .= '		VARIABLES:<br />';
-		$HELP .= '			<b>localhost:</b> Hold the localization for the database (local computer usually \'localhost\', online \'database.domain.com\');<br />';
-		$HELP .= '			<b>user:</b> Username with access to the database<br />';
-		$HELP .= '			<b>pass:</b> The user password to access the database;<br />';
-		$HELP .= '			<b>database:</b> The name of the database that you want to access;<br />';
-		$HELP .= '			<b>sgdb:</b> Database system manager that you want to use (default is mysql);<br /><br />';
+		$HELP .= '		METHOD: <b>databaseCONNECT</b>( (string) database <b>address</b>, (string) database <b>username</b>, (string) database <b>password</b>, (string) database <b>name</b>, (string) database <b>type</b> - mysql is default )<br />';
+		$HELP .= '			//connect to database system<br />';
+		$HELP .= '			ex :  $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata", "database" );<br />';
+		$HELP .= '			ex2: $database->databaseCONNECT( "localhost", "userlogin", "userpass", "mydata" ); // in case of be using mysql you don not need declare database type <br />';
+		$HELP .= '<br />';
 		$HELP .= '		METHOD: <b>databaseSELECT</b>( (string) SQL select query ) <br />';
 		$HELP .= '			//return an array with results from a SELECT query or 0 (if did not found anything)<br />';
 		$HELP .= '			ex: $myselect = $database->databaseSELECT("SELECT * FROM tablename");<br />';
 		$HELP .= '<br />';
 		$HELP .= '		METHOD: <b>databaseMODIFY</b>() <br />';
-		$HELP .= '			//used for INSERT, UPDATE, or DELETE queries. Just return the value 0 if the request fail, otherwise return an \'ARRAY\' with the results.<br />';
+		$HELP .= '			//used for INSERT, UPDATE, or DELETE queries. Just return the value 0 if could not executed the request.<br />';
 		$HELP .= '			ex : $myinsert = $database->databaseMODIFY("INSERT INTO tablename (column) VALUES (value) WHERE column = some_value");<br />';
 		$HELP .= '			ex2: $myupdate = $database->databaseMODIFY("UPDATE tablename SET column = value WHERE column = value2");<br />';
 		$HELP .= '			ex3: $mydelete = $database->databaseMODIFY("DELETE FROM tablename WHERE column = value");<br />';
@@ -42,47 +45,78 @@ class Database extends Debug{
 		$this->debugMESSAGE('H', $HELP); //show help message
 		
 		return '';
+		
+	}	
 	
+	
+	function __construct($debug=0, $debugphp=0){
+		
+		if($debug){
+			$this->debugSTART($debugphp);
+			$this->debugMESSAGE('S', 'DATABASE object created');
+		}
+		return '';
+		
 	}
 	
 	
+	
 	//Stabilish connection with database server.
-	function __construct($debug=0, $debugphp=0){		
-		
-		if($debug) $this->debugSTART($debugphp);	//fix the overwriting over the debug constructor method
-		
-		//creates an array with the values
-		$db = array('url'=>$this->url, 'user'=>$this->user, 'pass'=>$this->pass, 'database'=>$this->database, 'interface'=>'INTERFACE', 'sgdb'=>$this->sgdb);
-		
-		//verify which database system will be used and includes the especific library for it
-		switch($db['sgdb']){
-			case 'mysql':	include_once('xcore/php/Database/db_mysql.php');
-							break;
-							
-			case 'oracle':	include_once('xcore/php/Database/db_oracle.php');
-							break;
-							
-			case 'interbase':	include_once('xcore/php/Database/db_interbase.php');
-							break;
-							
-			case 'firebird':	include_once('xcore/php/Database/db_firebird.php');
-							break;
-							
-			case 'sqlserver':	include_once('xcore/php/Database/db_sqlserver.php');
-							break;
-							
-			case 'sqllite':	include_once('xcore/php/Database/db_sqllite.php');
-							break;
+	function databaseCONNECT($url, $user, $pass, $database, $sgdb='mysql'){		
+
+		//check if the arguments come with values
+		if(isset($url) && isset($user) && isset($pass) && isset($database)){
+
+			//assign to the arguments values to the class attributes
+			$this->url 		= $url;
+			$this->user 	= $user;
+			$this->pass 	= $pass;
+			$this->database = $database;
+			$this->sgdb 	= $sgdb;
+			
+			//creates an array with the values
+			$db = array('server'=>$this->url, 'user'=>$this->user, 'pass'=>$this->pass, 'database'=>$this->database, 'interface'=>'INTERFACE', 'sgdb'=>$this->sgdb);
+			
+			//verify which database system will be used and includes the especific library for it
+			switch($db['sgdb']){
+				case 'mysql':	include_once('./xcore/php/Database/db_mysql.php');
+								break;
+								
+				case 'oracle':	include_once('./xcore/php/Database/db_oracle.php');
+								break;
+								
+				case 'interbase':	include_once('./xcore/php/Database/db_interbase.php');
+								break;
+								
+				case 'firebird':	include_once('./xcore/php/Database/db_firebird.php');
+								break;
+								
+				case 'sqlserver':	include_once('./xcore/php/Database/db_sqlserver.php');
+								break;
+								
+				case 'sqllite':	include_once('./xcore/php/Database/db_sqllite.php');
+								break;
+			}
+
+
+			$this->dbconnection = db_connect($db);	//assign the connection object to the class attribute (can be used in other methods)
+			
+
+			
+			//DEBUG		
+			if($this->dbconnection)
+				$this->debugMESSAGE('S', 'Database successfuly <b>connected</b>!');
+			
+			
+			
+		}else{
+			
+			//DEBUG
+			$this->debugMESSAGE('E', 'Missing REQUIRED arguments. See INSTRUCTIONS BELOW for more details:');
+			echo $this; //call the HELP method
+			
+				
 		}
-
-
-		$this->dbconnection = db_connect($db);	//assign the connection object to the class attribute (can be used in other methods)
-		
-
-		
-		//DEBUG		
-		if($this->dbconnection)
-			$this->debugMESSAGE('S', 'Database successfuly <b>connected</b>!');
 		
 	}
 	
@@ -109,7 +143,7 @@ class Database extends Debug{
 				
 		}else{
 			
-			$this->debugMESSAGE('E', 'Database connection has not been initialized!<br />');	//show debug message
+			$this->debugMESSAGE('E', 'No database connection founded!<br />');	//show debug message
 			
 		}
 		
@@ -233,6 +267,38 @@ class Database extends Debug{
 		}else{ return 0; }//end: check connection
 		
 	}//end: method
+	
+	
+	//return table for current database
+	public function databaseTABLES(){
+		
+		switch($this->sgdb){
+			default:		
+				$tables = $this->databaseSELECT('SHOW TABLES FROM '.$this->database.';');
+		}
+		
+		return $tables;			
+		
+	}//end:databaseTABLES()
+	
+	
+	
+	//return field name and information for table passed as parameter
+	public function databaseFIELDS($table){
+		
+		switch($this->sgdb){
+			default:
+				$columns = $this->databaseSELECT('SHOW COLUMNS FROM '.$this->database.'.'.$table.';');		
+		}
+		
+		if($columns)
+			$this->debugMESSAGE('S', 'Returning columns for table <b>'.$table.'</b>');
+		else
+			$this->debugMESSAGE('E', 'Error trying return columns for table <b>'.$table.'</b>');
+
+		return $columns;			
+		
+	}//end:databaseFIELDS()
 	
 	
 	//CREATE METHOD TO DEAL WITH PERSISTENT CONNECTION (EX: mysql_pconnect)<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

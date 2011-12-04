@@ -145,7 +145,7 @@ class Database extends Debug{
 				
 		}else{
 			
-			$this->debugMESSAGE('E', 'No database connection founded!<br />');	//show debug message
+			$this->debugMESSAGE('E', 'No database connection found!<br />');	//show debug message
 			
 		}
 		

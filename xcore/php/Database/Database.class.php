@@ -1,18 +1,40 @@
 <?php
-
-//inherited class localization
-include_once("./xcore/php/Debug/Debug.class.php");
-
+/*
+	@type: CLASS
+	@author: JOSE MARIZ MELO
+	@company: XCHEMA
+	@release: 18/07/2010
+	@updated: 05/18/2012
+	@description: Functions to deal with database connection 
+	@todo:	
+		use PDO connection
+		verify if database modules are not present (line 98)	
+*/	
 
 class Database extends Debug{
 	
 	//attributes
-	private $url;
-	private $user;
-	private $pass;
-	private $database;
-	private $sgdb;
-	private $dbconnection;		
+	private $url = "localhost";
+	private $user = "root";
+	private $pass = "";
+	private $database = "";
+	private $sgdb = "mysql";
+	private $dbconnection;	//system variable
+
+
+
+	/*INITILIZES CLASS WITH ACCESS TO DEBUG SYSTEM*/
+	function __construct($debug=0, $debugphp=0){
+		
+		if($debug){
+			$this->debugSTART($debugphp);
+			$this->debugMESSAGE('S', 'DATABASE object created');
+		}
+		return '';
+		
+	}//__construct
+
+
 
 
 	//help about how to use the class
@@ -51,15 +73,6 @@ class Database extends Debug{
 	}	
 	
 	
-	function __construct($debug=0, $debugphp=0){
-		
-		if($debug){
-			$this->debugSTART($debugphp);
-			$this->debugMESSAGE('S', 'DATABASE object created');
-		}
-		return '';
-		
-	}
 	
 	
 	
@@ -81,7 +94,11 @@ class Database extends Debug{
 			
 			//verify which database system will be used and includes the especific library for it
 			switch($db['sgdb']){
-				case 'mysql':	include_once('./xcore/php/Database/db_mysql.php');
+				case 'mysql':	if (!extension_loaded('mysql')){
+									$this->debugMESSAGE('E', 'mysql not installed');
+									exit();
+								}//verifies if mysql module is installed on the system
+								include_once('./xcore/php/Database/db_mysql.php');
 								break;
 								
 				case 'oracle':	include_once('./xcore/php/Database/db_oracle.php');

@@ -1,13 +1,16 @@
 <?php
+/*
+	@type: CONFIGURATION FILE
+	@author: MARIZ MELO
+	@company: XCHEMA
+	@release: 01/11/2011
+	@update: 05/18/2012
+	@todo:
+		migrate documentation to /docs (load using ajax/jquery)
+*/
 
-/*@type: CONFIGURATION FILE */
-/*@author: JOSE MARIZ MELO */
-/*@company: XCHEMA */
-/*@release: 01/11/2011 */
-/*@updated: 01/12/2011 */
 
-
-//LIBRARY VERSION
+//FRAMEWORK VERSION
 $xcore_version = '0.1 beta';
 
 
@@ -22,6 +25,7 @@ function __autoload($class)
 	  other classes then xcore classes*/
 	if(file_exists($classfile) && !class_exists($class))
 		include_once $classfile;	
-}
+		
+}//__autoload()
 
 ?>

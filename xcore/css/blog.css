@@ -1,0 +1,42 @@
+/*
+	@type: STYLESHEET
+	@author: MARIZ MELO
+	@company: XCHEMA
+	@release: 05/18/2012
+*/
+#menu{
+	color: white;
+	position: fixed;
+	height: 100%;
+	background: black;
+	width: 190px;
+	border-right: 1px solid black;
+	padding: 20px 30px;
+}
+#menu h1{
+	font-size: 36px;
+	font-weight: 300;
+}
+#menu li{
+	margin-bottom: 5px;
+}
+#menu a{
+	color: white;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 11px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#menu a:hover{
+	color: black;
+	background: white;
+}
+#posts{
+	font-weight: 300;
+	margin-left: 250px;
+	position: absolute;
+	padding: 20px 30px;
+	height: 2000px; 
+}

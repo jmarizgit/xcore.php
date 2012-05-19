@@ -1,18 +1,35 @@
 <?php
-
-/*@type: CLASS */
-/*@author: JOSE MARIZ MELO */
-/*@company: XCHEMA */
-/*@release: 18/07/2010 */
-/*@updated: 18/07/2010 */
-/*@description: Initialize the custom variable values for the website/project */
-
-
-//inherited class localization
-//include_once("xcore/php/Debug/Debug.class.php");
+/*
+	@type: CLASS
+	@author: JOSE MARIZ MELO
+	@company: XCHEMA
+	@release: 07/18/2010
+	@updated: 05/18/2012
+	@description: Initialize the custom variable values for the website/project 
+*/
 
 
 class Configure extends Debug{
+
+
+	/*@attributes*/
+	private $class_att = array('title'=>'xchema CORE', 'lang'=>'en-US');
+
+
+
+
+	/*INITILIZES CLASS WITH ACCESS TO DEBUG SYSTEM*/
+	function __construct($debug=0, $debugphp=0){
+		
+		if($debug){
+			$this->debugSTART($debugphp);
+			$this->debugMESSAGE('S', 'CONFIGURE object created');
+		}
+		return '';
+		
+	}
+
+
 
 	/*HELP instructions*/
 	function __toString(){
@@ -39,10 +56,9 @@ class Configure extends Debug{
 		$this->debugMESSAGE('H', $HELP);
 		return '';
 		
-	}
+	}//end:HELP
 	
-	/*@attributes*/
-	private $class_att = array('title'=>'xchema CORE v0.1 (beta)', 'lang'=>'en-US');
+	
 	
 	/*GETS and SETS for attributes array*/
 	function __get($att){

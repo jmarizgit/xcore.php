@@ -1,0 +1,157 @@
+/*
+	magritte.css
+	Mariz Melo MM 2012
+	https://github.com/jmarizgit/magritte.css
+	MIT license
+*/
+
+/*** GOOGLE WEBFONTS ***/
+@import url(http://fonts.googleapis.com/css?family=Roboto:regular,medium,light,thin,italic,mediumitalic);
+
+
+/*** RESET CSS ***/
+html, body,
+div, span, p,
+ul, li, dl, dt, dd, ol{
+	margin: 		0;
+	padding: 		0;
+	border:			0;
+	outline-style: 	0;
+	text-align:		left;
+}
+body{
+	font:    		62.5% "Roboto", sans-serif;
+	font-style: 	regular;
+	height: 		100%;
+	text-align:		center;
+}
+ul{
+	list-style: 	none;
+}
+
+/* LAYOUT */
+
+/* mobile */
+	
+	.mg_mobile{
+		font-size:	1.4em;	
+	}
+	
+	.mg_mobile .leftside{
+		width: 		100%;
+		*width: 	600px;
+		background: red;
+		float: 		left;	
+	}
+	.mg_mobile .rightside{
+		width: 100%;
+		*width: 360px;
+		background: blue;
+		float: left;	
+	}
+	
+	.mg_mobile .mg_1col{
+		width: 100%;
+	}
+	.mg_mobile .mg_2col{
+		width: 50%;
+		float: left;
+	}
+	.mg_3col, .mg_4col, .mg_5col, .mg_6col{
+		width: 100%;
+		float: left;
+	}
+
+/* desktop */
+@media all and (min-width: 960px){	/*define your layout min-size here*/
+	
+	.mg_fixed{
+		margin-left: 	auto;
+		margin-right: 	auto;
+		width: 			960px;
+		text-align: 	left;
+	}
+	.mg_fluid{
+		width: 100%;
+	}
+	
+	/* using fixed layout */
+	.mg_fixed .leftside{
+		width: 600px;
+	}
+	.mg_fixed .rightside{
+		width: 360px;
+	}
+
+	.mg_fixed .mg_1col{
+		width: 940px;
+		margin: 10px;
+		padding: 10px 0;
+		background: #ccc;
+		overflow: hidden;
+	}
+	.mg_fixed .mg_2col{	
+		background: #ccc;
+		margin: 10px;
+		padding: 10px 0;
+		width: 460px;
+	}
+	
+	.mg_fixed .mg_3col{	
+		background: #ccc;
+		margin: 10px;
+		padding: 10px 0;
+		width: 300px;
+	}
+	
+	.mg_fixed .mg_4col{	
+		background: #ccc;
+		margin: 10px;
+		padding: 10px 0;
+		width: 220px;
+	}
+	
+	.mg_fixed .mg_5col{	
+		background: #ccc;
+		margin: 10px;
+		padding: 10px 0;
+		width: 172px;
+	}
+	
+	.mg_fixed .mg_6col{	
+		background: #ccc;
+		margin: 10px;
+		padding: 10px 0;
+		width: 140px;
+	}
+	
+	.mg_skip1col{
+		margin-left: 250px !important;
+	}
+}/* end:desktop */
+
+
+/* magritte utility classes */
+.mg_clean{
+	overflow: hidden;
+	width: 100%;
+}
+.mg_clear{clear: both;}
+.mg_opacity{
+	-moz-opacity:.50; 
+	filter:alpha(opacity=50); 
+	opacity:.5;
+}
+.mg_rounded {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+.mg_shadow {
+  -moz-box-shadow: 2px 2px 2px black;
+  -webkit-box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px black;
+}

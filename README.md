@@ -15,6 +15,7 @@ include "xcore/php/xcore.php";
 ...
 ```
 
+
 OBS: XCORE provide folders where you can put your own files if you 
 prefer (css, js, img, swf).
 

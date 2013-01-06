@@ -55,7 +55,7 @@ echo $configure->title; //should display your own title name now
 
 ##3. VERSION
 
-V0.1b, 01-11-2011
+V0.1b, 11-01-2011
 
 
 ##AUTHOR

@@ -19,8 +19,6 @@ OBS: XCORE provide folders where you can put your own files if you
 prefer (css, js, img, swf).
 
 
-
-
 ##1.2 HOW TO USE
 
 After complete the instalation (1.1) you can start to use XCORE simple by creating new
@@ -50,7 +48,6 @@ echo $configure->title; //should display the XCORE default title
 $configure->title = "My web project title"; //set your own title name
 echo $configure->title; //should display your own title name now
 ```
-
 
 
 ##3. VERSION
